@@ -240,6 +240,7 @@ export default {
             var ids = id ? [id] : this.dataListSelections.map(item => {
                 return item.attrGroupId
             })
+            console.log("cs")
             this.$confirm('此操作将永久删除这些属性分组！', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
