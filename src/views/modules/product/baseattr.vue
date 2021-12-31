@@ -97,7 +97,7 @@
                         label="所属分类">
                     </el-table-column>
                     <el-table-column
-                        prop="groupName"
+                        prop="attrgroupName"
                         header-align="center"
                         align="center"
                         label="所属分组">
