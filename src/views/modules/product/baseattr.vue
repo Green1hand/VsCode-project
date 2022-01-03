@@ -109,7 +109,7 @@
                         width="150"
                         label="操作">
                         <template slot-scope="scope">
-                        <el-button type="text" size="small" @click="addOrUpdateHandle(scope.row.attrGroupId)">修改</el-button>
+                        <el-button type="text" size="small" @click="addOrUpdateHandle(scope.row.attrId)">修改</el-button>
                         <el-button type="text" size="small" @click="deleteHandle(scope.row.attrGroupId)">删除</el-button>
                         </template>
                     </el-table-column>
@@ -124,7 +124,7 @@
                     layout="total, sizes, prev, pager, next, jumper">
                 </el-pagination>
                 <!-- 弹窗, 新增 / 修改 -->
-                <add-or-update v-if="addOrUpdateVisible" ref="addOrUpdate" @refreshDataList="getDataList"></add-or-update>
+                <AddOrUpdateBaseattr v-if="addOrUpdateVisible" ref="addOrUpdateBaseattr" @refreshDataList="getDataList"></AddOrUpdateBaseattr>
             </div>
         </el-col>
     </el-row>
@@ -132,12 +132,12 @@
 
 <script>
 import category from '../common/category'
-import AddOrUpdate from './attrgroup-add-or-update'
+import AddOrUpdateBaseattr from './baseattr-add-or-update.vue'
 
 export default {
     name: 'VscodeProjectAttrgroup',
 
-    components: { category, AddOrUpdate},
+    components: { category, AddOrUpdateBaseattr},
 
     data () {
         return {
@@ -231,8 +231,9 @@ export default {
         // 新增 / 修改
         addOrUpdateHandle (id) {
             this.addOrUpdateVisible = true
+            console.log(id)
             this.$nextTick(() => {
-                this.$refs.addOrUpdate.init(id)
+                this.$refs.addOrUpdateBaseattr.init(id)
             })
         },
         // 删除

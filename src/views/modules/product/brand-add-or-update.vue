@@ -96,6 +96,7 @@ import singleUpload from '@/components/upload/singleUpload'
     methods: {
       // 新增 or 修改
       init (id) {
+        console.log(id)
         this.dataForm.brandId = id || 0
         this.visible = true
         this.$nextTick(() => {

@@ -2,8 +2,8 @@
   <nav class="site-navbar" :class="'site-navbar--' + navbarLayoutType">
     <div class="site-navbar__header">
       <h1 class="site-navbar__brand" @click="$router.push({ name: 'home' })">
-        <a class="site-navbar__brand-lg" href="javascript:;">人人快速开发平台</a>
-        <a class="site-navbar__brand-mini" href="javascript:;">人人</a>
+        <a class="site-navbar__brand-lg" href="javascript:;">TillDawn</a>
+        <a class="site-navbar__brand-mini" href="javascript:;">TD</a>
       </h1>
     </div>
     <div class="site-navbar__body clearfix">
@@ -24,21 +24,21 @@
             </el-badge>
           </template>
         </el-menu-item>
-        <el-menu-item index="2">
+        <!-- <el-menu-item index="2">
           <el-badge value="hot">
-            <a href="https://www.renren.io/" target="_blank">官方社区</a>
+            <a href="https://github.com/Green1hand" target="_blank">GitHub</a>
           </el-badge>
-        </el-menu-item>
+        </el-menu-item> -->
         <el-submenu index="3">
           <template slot="title">Git源码</template>
-          <el-menu-item index="2-1"><a href="https://github.com/renrenio/renren-fast-vue" target="_blank">前端</a></el-menu-item>
-          <el-menu-item index="2-2"><a href="https://gitee.com/renrenio/renren-fast" target="_blank">后台</a></el-menu-item>
-          <el-menu-item index="2-3"><a href="https://gitee.com/renrenio/renren-generator" target="_blank">代码生成器</a></el-menu-item>
+          <el-menu-item index="2-1"><a href="https://github.com/Green1hand/renren-fast-vue" target="_blank">前端</a></el-menu-item>
+          <el-menu-item index="2-2"><a href="https://gitee.com/chenhaofan/gulimaill" target="_blank">后台</a></el-menu-item>
+          <!-- <el-menu-item index="2-3"><a href="https://gitee.com/renrenio/renren-generator" target="_blank">代码生成器</a></el-menu-item> -->
         </el-submenu>
         <el-menu-item class="site-navbar__avatar" index="3">
           <el-dropdown :show-timeout="0" placement="bottom">
             <span class="el-dropdown-link">
-              <img src="~@/assets/img/avatar.png" :alt="userName">{{ userName }}
+              <img src="http://39.108.118.4:8888/down/qk04tUyjyLX0" :alt="userName">{{ userName }}
             </span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item @click.native="updatePasswordHandle()">修改密码</el-dropdown-item>
