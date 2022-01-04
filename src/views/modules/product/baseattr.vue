@@ -47,8 +47,8 @@
                         align="center"
                         label="可检索">
                         <template slot-scope="scope">
-                            <i v-if="scope.row.searchType === 1" class="el-icon-success"></i> 
-                            <i v-if="scope.row.searchType === 0" class="el-icon-error"></i> 
+                            <i v-if="scope.row.searchType === 1" class="el-icon-success"></i>
+                            <i v-if="scope.row.searchType === 0" class="el-icon-error"></i>
                         </template>
                     </el-table-column>
                     <el-table-column
@@ -86,8 +86,8 @@
                         align="center"
                         label="启用">
                         <template slot-scope="scope">
-                            <i v-if="scope.row.searchType === 1" class="el-icon-success"></i> 
-                            <i v-if="scope.row.searchType === 0" class="el-icon-error"></i> 
+                            <i v-if="scope.row.searchType === 1" class="el-icon-success"></i>
+                            <i v-if="scope.row.searchType === 0" class="el-icon-error"></i>
                         </template>
                     </el-table-column>
                     <el-table-column
@@ -135,54 +135,54 @@ import category from '../common/category'
 import AddOrUpdateBaseattr from './baseattr-add-or-update.vue'
 
 export default {
-    name: 'VscodeProjectAttrgroup',
+  name: 'VscodeProjectAttrgroup',
 
-    components: { category, AddOrUpdateBaseattr},
+  components: { category, AddOrUpdateBaseattr},
 
-    data () {
-        return {
-            catId: 0,
-            dataForm: {
-                key: ''
-            },
-            dataList: [],
-            pageIndex: 1,
-            pageSize: 10,
-            totalPage: 0,
-            dataListLoading: false,
-            dataListSelections: [],
-            addOrUpdateVisible: false
-        }
-    },
-    activated () {
-        this.getDataList()
-    },
-    methods: {
+  data () {
+    return {
+      catId: 0,
+      dataForm: {
+        key: ''
+      },
+      dataList: [],
+      pageIndex: 1,
+      pageSize: 10,
+      totalPage: 0,
+      dataListLoading: false,
+      dataListSelections: [],
+      addOrUpdateVisible: false
+    }
+  },
+  activated () {
+    this.getDataList()
+  },
+  methods: {
       // 获取数据列表
-        getDataList () {
-            this.dataListLoading = true
-            this.$http({
-                url: this.$http.adornUrl(`/product/attr/base/list/${this.catId}`),
-                method: 'get',
-                params: this.$http.adornParams({
-                    'page': this.pageIndex,
-                    'limit': this.pageSize,
-                    'key': this.dataForm.key
-                })
-            }).then(({data}) => {
-                if (data && data.code === 0) {
-                    console.log("获取的数据：" , data.page)
-                    this.totalPage = data.page.totalCount
-                    this.dataList = data.page.list
+    getDataList () {
+      this.dataListLoading = true
+      this.$http({
+        url: this.$http.adornUrl(`/product/attr/base/list/${this.catId}`),
+        method: 'get',
+        params: this.$http.adornParams({
+          'page': this.pageIndex,
+          'limit': this.pageSize,
+          'key': this.dataForm.key
+        })
+      }).then(({data}) => {
+        if (data && data.code === 0) {
+          console.log('获取的数据：', data.page)
+          this.totalPage = data.page.totalCount
+          this.dataList = data.page.list
                     // this.getMenName(data.page.list)
-                } else {
-                    this.dataList = []
-                    this.totalPage = 0
-                }
-                this.dataListLoading = false
-                })
-        },
-        
+        } else {
+          this.dataList = []
+          this.totalPage = 0
+        }
+        this.dataListLoading = false
+      })
+    },
+
         // // 赋予数据分类名称
         // getMenName (data) {
         //     data.forEach((one) => {
@@ -200,73 +200,73 @@ export default {
         // },
 
         // 查询所有值
-        getDataListAll () {
-            this.catId = 0
-            this.getDataList()
-        },
+    getDataListAll () {
+      this.catId = 0
+      this.getDataList()
+    },
         // 子组件事件
-        treenodeclick (data, node, component) {
-            console.log('获取子组件点击事件数据：', data, node, component)
-            console.log('被点击节点ID：', data.catId)
-            if (node.level === 3) {
-                this.catId = data.catId
-                this.getDataList()
-            }
-        },
+    treenodeclick (data, node, component) {
+      console.log('获取子组件点击事件数据：', data, node, component)
+      console.log('被点击节点ID：', data.catId)
+      if (node.level === 3) {
+        this.catId = data.catId
+        this.getDataList()
+      }
+    },
         // 每页数
-        sizeChangeHandle (val) {
-            this.pageSize = val
-            this.pageIndex = 1
-            this.getDataList()
-        },
+    sizeChangeHandle (val) {
+      this.pageSize = val
+      this.pageIndex = 1
+      this.getDataList()
+    },
         // 当前页
-        currentChangeHandle (val) {
-            this.pageIndex = val
-            this.getDataList()
-        },
+    currentChangeHandle (val) {
+      this.pageIndex = val
+      this.getDataList()
+    },
         // 多选
-        selectionChangeHandle (val) {
-            this.dataListSelections = val
-        },
+    selectionChangeHandle (val) {
+      this.dataListSelections = val
+    },
         // 新增 / 修改
-        addOrUpdateHandle (id) {
-            this.addOrUpdateVisible = true
-            console.log(id)
-            this.$nextTick(() => {
-                this.$refs.addOrUpdateBaseattr.init(id)
-            })
-        },
+    addOrUpdateHandle (id) {
+      this.addOrUpdateVisible = true
+      console.log(id)
+      this.$nextTick(() => {
+        this.$refs.addOrUpdateBaseattr.init(id)
+      })
+    },
         // 删除
-        deleteHandle (id) {
-            var ids = id ? [id] : this.dataListSelections.map(item => {
-                return item.attrGroupId
+    deleteHandle (id) {
+      var ids = id ? [id] : this.dataListSelections.map(item => {
+        return item.attrGroupId
+      })
+      this.$confirm('此操作将永久删除这些属性分组！', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.$http({
+          url: this.$http.adornUrl('/product/attr/delete'),
+          method: 'post',
+          data: this.$http.adornData(ids, false)
+        }).then(({data}) => {
+          if (data && data.code === 0) {
+            this.$message({
+              message: '操作成功',
+              type: 'success',
+              duration: 1500,
+              onClose: () => {
+                this.getDataList()
+              }
             })
-            this.$confirm('此操作将永久删除这些属性分组！', '提示', {
-                confirmButtonText: '确定',
-                cancelButtonText: '取消',
-                type: 'warning'
-            }).then(() => {
-                this.$http({
-                    url: this.$http.adornUrl('/product/attr/delete'),
-                    method: 'post',
-                    data: this.$http.adornData(ids, false)
-            }).then(({data}) => {
-                if (data && data.code === 0) {
-                    this.$message({
-                        message: '操作成功',
-                        type: 'success',
-                        duration: 1500,
-                        onClose: () => {
-                        this.getDataList()
-                        }
-                    })
-                } else {
-                    this.$message.error(data.msg)
-                }
-            })
-            })
-        }
+          } else {
+            this.$message.error(data.msg)
+          }
+        })
+      })
     }
+  }
 }
 </script>
 

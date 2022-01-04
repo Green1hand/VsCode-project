@@ -78,7 +78,7 @@
       getCategorys () {
         this.$http({
           url: this.$http.adornUrl('/product/category/list/tree'),
-            method: 'get'
+          method: 'get'
         }).then(({data}) => {
           console.log(data.data)
           this.categorys = data.data
@@ -122,7 +122,7 @@
                 'sort': this.dataForm.sort,
                 'descript': this.dataForm.descript,
                 'icon': this.dataForm.icon,
-                'catelogId': this.dataForm.catelogPath[this.dataForm.catelogPath.length-1]
+                'catelogId': this.dataForm.catelogPath[this.dataForm.catelogPath.length - 1]
               })
             }).then(({data}) => {
               if (data && data.code === 0) {
@@ -148,6 +148,6 @@
     },
     created () {
       this.getCategorys()
-    },
+    }
   }
 </script>

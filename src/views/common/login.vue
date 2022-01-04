@@ -3,8 +3,8 @@
     <div class="site-content__wrapper">
       <div class="site-content">
         <div class="brand-info">
-          <h2 class="brand-info__text">renren-fast-vue</h2>
-          <p class="brand-info__intro">renren-fast-vue基于vue、element-ui构建开发，实现renren-fast后台管理前端功能，提供一套更优的前端解决方案。</p>
+          <h2 class="brand-info__text">Till-Dawn</h2>
+          <p class="brand-info__intro">书山有路勤为径，学海无涯苦作舟！闻道有先后，术业有专攻！</p>
         </div>
         <div class="login-main">
           <h3 class="login-title">管理员登录</h3>
@@ -106,7 +106,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: rgba(38, 50, 56, .6);
+    background-color: rgba(38, 50, 56, 0.3);
     overflow: hidden;
     &:before {
       position: fixed;
@@ -116,7 +116,8 @@
       width: 100%;
       height: 100%;
       content: "";
-      background-image: url(~@/assets/img/login_bg.jpg);
+      //background-image: url(~@/assets/img/login_bg.jpg);
+      background-image: url(http://39.108.118.4:8888/down/qk04tUyjyLX0);
       background-size: cover;
     }
     .site-content__wrapper {
@@ -141,15 +142,17 @@
     }
     .brand-info__text {
       margin:  0 0 22px 0;
+      color: beige;
       font-size: 48px;
       font-weight: 400;
-      text-transform : uppercase;
+      //text-transform : uppercase;
     }
     .brand-info__intro {
       margin: 10px 0;
+      color: beige;
       font-size: 16px;
       line-height: 1.58;
-      opacity: .6;
+      opacity: 1;
     }
     .login-main {
       position: absolute;
@@ -158,10 +161,13 @@
       padding: 150px 60px 180px;
       width: 470px;
       min-height: 100%;
-      background-color: #fff;
+      //background-color: #ccc;
+      background-color: rgba(204, 204, 204, 0.5);
+      border-radius: 10px;
     }
     .login-title {
-      font-size: 16px;
+      font-size: 20px;
+      color: beige;
     }
     .login-captcha {
       overflow: hidden;
