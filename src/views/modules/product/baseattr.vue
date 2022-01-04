@@ -57,7 +57,9 @@
                         align="center"
                         label="值类型">
                         <template slot-scope="scope">
-                            <el-tag>{{scope.row.valueType}}</el-tag>
+                            <el-tag v-if="scope.row.valueType === 2">类型3</el-tag>
+                            <el-tag v-if="scope.row.valueType === 1">类型2</el-tag>
+                            <el-tag v-if="scope.row.valueType === 0">类型1</el-tag>
                         </template>
                     </el-table-column>
                     <el-table-column
@@ -70,15 +72,8 @@
                         prop="valueSelect"
                         header-align="center"
                         align="center"
+                        :show-overflow-tooltip="true"
                         label="可选值">
-                        <template slot-scope="scope">
-                            <el-popover trigger="hover" placement="top">
-                                <p>{{ scope.row.valueSelect}}</p>
-                                <div slot="reference">
-                                    <el-tag size="medium">{{ scope.row.valueSelect }}</el-tag>
-                                </div>
-                            </el-popover>
-                        </template>
                     </el-table-column>
                     <el-table-column
                         prop="enable"
@@ -86,8 +81,8 @@
                         align="center"
                         label="启用">
                         <template slot-scope="scope">
-                            <i v-if="scope.row.searchType === 1" class="el-icon-success"></i>
-                            <i v-if="scope.row.searchType === 0" class="el-icon-error"></i>
+                            <i v-if="scope.row.enable === 1" class="el-icon-success"></i>
+                            <i v-if="scope.row.enable === 0" class="el-icon-error"></i>
                         </template>
                     </el-table-column>
                     <el-table-column
@@ -137,7 +132,7 @@ import AddOrUpdateBaseattr from './baseattr-add-or-update.vue'
 export default {
   name: 'VscodeProjectAttrgroup',
 
-  components: { category, AddOrUpdateBaseattr},
+  components: {category, AddOrUpdateBaseattr},
 
   data () {
     return {
@@ -231,7 +226,6 @@ export default {
         // 新增 / 修改
     addOrUpdateHandle (id) {
       this.addOrUpdateVisible = true
-      console.log(id)
       this.$nextTick(() => {
         this.$refs.addOrUpdateBaseattr.init(id)
       })

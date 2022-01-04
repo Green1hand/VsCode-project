@@ -122,7 +122,7 @@
                 'sort': this.dataForm.sort,
                 'descript': this.dataForm.descript,
                 'icon': this.dataForm.icon,
-                'catelogId': this.dataForm.catelogPath[this.dataForm.catelogPath.length-1]
+                'catelogId': this.dataForm.catelogPath[this.dataForm.catelogPath.length - 1]
               })
             }).then(({data}) => {
               if (data && data.code === 0) {
