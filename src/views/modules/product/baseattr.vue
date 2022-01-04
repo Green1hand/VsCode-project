@@ -105,7 +105,7 @@
                         label="操作">
                         <template slot-scope="scope">
                         <el-button type="text" size="small" @click="addOrUpdateHandle(scope.row.attrId)">修改</el-button>
-                        <el-button type="text" size="small" @click="deleteHandle(scope.row.attrGroupId)">删除</el-button>
+                        <el-button type="text" size="small" @click="deleteHandle(scope.row.attrId)">删除</el-button>
                         </template>
                     </el-table-column>
                 </el-table>
@@ -177,23 +177,6 @@ export default {
         this.dataListLoading = false
       })
     },
-
-        // // 赋予数据分类名称
-        // getMenName (data) {
-        //     data.forEach((one) => {
-        //         this.$http({
-        //             url: this.$http.adornUrl(`/product/category/info/${one.catelogId}`),
-        //             method: 'get',
-        //             params: this.$http.adornParams({})
-        //         }).then(({data}) => {
-        //             console.log("根据", one.catelogId, "查询出的数据:", data.data)
-        //             one.catelogName = data.data.name
-        //         })
-        //     })
-        //     console.log("重组后的数据：" , data)
-        //     this.dataList = data
-        // },
-
         // 查询所有值
     getDataListAll () {
       this.catId = 0
@@ -233,7 +216,7 @@ export default {
         // 删除
     deleteHandle (id) {
       var ids = id ? [id] : this.dataListSelections.map(item => {
-        return item.attrGroupId
+        return item.attrId
       })
       this.$confirm('此操作将永久删除这些属性分组！', '提示', {
         confirmButtonText: '确定',
